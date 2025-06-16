@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Ad Muter",
+  "version": "1.0",
+  "description": "Automatically mutes YouTube when ads are playing.",
+  "permissions": ["storage", "scripting"],
+  "host_permissions": ["*://www.youtube.com/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "mute-icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://www.youtube.com/*", "*://music.youtube.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "48": "mute-icon.png"
+  }
+}
