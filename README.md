@@ -1,3 +1,8 @@
+ <div style="width: 100px;  margin: 0 auto; ">
+
+![alt](mute-icon.png )
+ </div>
+ 
 # YouTube Ad Muter Extension
 
 A simple and effective Chrome extension to automatically mute advertisements on YouTube and YouTube Music, ensuring a smoother and uninterrupted viewing and listening experience. Say goodbye to sudden loud ads breaking your flow!

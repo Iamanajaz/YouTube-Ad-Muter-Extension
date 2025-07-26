@@ -3,97 +3,123 @@
 
 <head>
   <style>
+    :root {
+      --primary: 15, 126, 245;
+      --onprimary: 255, 255, 255;
+      --onsurface: 0, 0, 0;
+    }
+
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      width: 200px;
+      background: #f9f9f9;
+    }
+
+    .link {
+      text-align: center;
+      margin: 0 10px;
+      font-size: 15px;
+      transition: transform 0.2s ease;
+      color: rgba(0, 0, 0, 0.87);
+      text-decoration: none;
+    }
+    
+    .link:hover {
+      color: rgb(var(--primary));
+    }
+
+    img {
+      width: 50px;
+      height: 50px;
+
+    }
+
+    .toggle-container {
+      display: flex;
+      margin: 30px auto;
+      align-items: center;
+      gap: 10px;
+      margin: 10px 0;
       padding: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #f0f2f5;
-      margin: 0;
-      box-sizing: border-box;
+      min-width: 100px;
+      border-radius: 10px;
+      background: #fff;
+      transition: transform 0.2s ease;
+      cursor: pointer;
+      width: fit-content;
     }
 
-    .checkbox-container {
-      background-color: #ffffff;
-      padding: 25px 30px;
-      border-radius: 12px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      transition: transform 0.2s ease-in-out;
+    .toggle-container:hover {
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+      transform: translateY(-2px);
     }
 
-    .checkbox-container:hover {
-      transform: translateY(-3px);
+    .toggle-label {
+      text-transform: capitalize;
+      font-size: 15px;
+      font-weight: 400;
+      color: rgba(var(--onsurface), 0.87);
     }
 
-    input[type="checkbox"] {
-      position: absolute;
+    .switch {
+      position: relative;
+      width: 55px;
+      height: 20px;
+    }
+
+    .switch input {
       opacity: 0;
       width: 0;
       height: 0;
-      pointer-events: none;
     }
 
-    .custom-checkbox {
-      display: inline-block;
-      width: 24px;
-      height: 24px;
-      border: 2px solid #ccd0d5;
-      border-radius: 6px;
-      position: relative;
-      cursor: pointer;
-      flex-shrink: 0;
-      transition: all 0.2s ease-in-out;
-      background-color: #e9ecef;
-    }
-
-    .custom-checkbox::after {
-      content: '';
+    .slider {
       position: absolute;
-      top: 42%;
-      left: 50%;
-      width: 8px;
-      height: 14px;
-      border: solid #ffffff;
-      border-width: 0 3px 3px 0;
-      transform: translate(-50%, -50%) rotate(45deg);
-      opacity: 0;
-      transition: opacity 0.2s ease-in-out;
-    }
-
-    input[type="checkbox"]:checked+.custom-checkbox {
-      background-color: #007bff;
-      border-color: #007bff;
-      box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
-    }
-
-    input[type="checkbox"]:checked+.custom-checkbox::after {
-      opacity: 1;
-    }
-
-    .checkbox-label-text {
-      font-size: 1.1em;
-      color: #343a40;
       cursor: pointer;
-      user-select: none;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(var(--onsurface), 0.38);
+      border-radius: 20px;
+      transition: background-color 0.2s;
     }
 
-    input[type="checkbox"]:focus+.custom-checkbox {
-      box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.4);
-      border-color: #007bff;
+    .slider::after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 5px;
+      width: 16px;
+      height: 16px;
+      background-color: rgb(var(--onprimary));
+      border-radius: 50%;
+      transition: transform 0.2s, background-color 0.2s;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .switch input:checked+.slider {
+      background-color: rgba(var(--primary), 0.6);
+    }
+
+    .switch input:checked+.slider::after {
+      transform: translateX(16px);
+      /* background-color: rgb(var(--primary)); */
     }
   </style>
 </head>
 
 <body>
-  <label class="checkbox-container">
-    <input type="checkbox" id="toggle" />
-    <span class="custom-checkbox"></span>
-    <span class="checkbox-label-text">Mute During Ads</span>
+  <label class="toggle-container">
+    <img src="mute-icon.png" alt="">
+    <span class="toggle-label">Mute Ads</span>
+    <div class="switch">
+      <input type="checkbox" id="toggle" />
+      <div class="slider"></div>
+    </div>
   </label>
+  <a class="link" href="https://github.com/Iamanajaz/YouTube-Ad-Muter-Extension" target="_blank">Fork or Give Star on
+    Github</a>
   <script src="popup.js"></script>
 </body>
 
